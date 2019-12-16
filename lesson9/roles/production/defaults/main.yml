@@ -1,0 +1,6 @@
+---
+# defaults file for production
+dest_folder: /var/lib/tomcat8/webapps/
+src_folder: /tmp/testProject
+war_folder: /target/hello-1.0.war
+host_ip: 20.185.10.203

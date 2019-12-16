@@ -1,0 +1,23 @@
+---
+# tasks file for builder
+- name: ensure java package is present
+  apt:
+    name: openjdk-8-jdk
+    state: present
+
+- name: ensure project is cloned
+  git:
+    clone: yes
+    repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello
+    dest: "{{dest_folder}}"
+
+- name: ensure mvn package is present
+  apt:
+    name: maven
+    state: present
+
+- name: maven package
+  command: mvn -f {{dest_folder}}/pom.xml package
+
+- name: fetch file from remote to local machine
+  fetch: src={{dest_folder}}/target/hello-1.0.war dest={{dest_folder}}

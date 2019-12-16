@@ -1,0 +1,19 @@
+---
+# tasks file for production
+- name: ensure java package is present
+  apt:
+    name: openjdk-8-jdk
+    state: present
+
+- name: ensure tomcat package is present
+  apt:
+    name: tomcat8
+    state: present
+
+- name: ensure tomcat service is started
+  service:
+    name: tomcat8
+    state: started
+
+- name: Ensure  app war file is copied into tomcat working dir
+  copy: src={{src_folder}}/{{host_ip}}/{{src_folder}}{{war_folder}} dest={{dest_folder}}
