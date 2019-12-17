@@ -1,0 +1,4 @@
+---
+# handlers file for production
+- name: restart tomcat8
+  service: name=tomcat8 state=restarted
